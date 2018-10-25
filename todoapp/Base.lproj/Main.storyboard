@@ -34,9 +34,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="DQw-P9-HXq" kind="show" identifier="detailTransition" id="ksR-Iv-jcT"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -51,6 +48,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="DQw-P9-HXq" kind="show" identifier="detailTransition" id="1Yd-s8-Rpx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6U2-am-0ND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="544.79999999999995" y="21.139430284857571"/>
         </scene>
-        <!--TaskDetails-->
+        <!--Task Details-->
         <scene sceneID="f0s-E6-uhI">
             <objects>
-                <viewController storyboardIdentifier="Task Details" title="TaskDetails" id="DQw-P9-HXq" customClass="TaskDetailViewController" customModule="todoapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Task Details" title="Task Details" id="DQw-P9-HXq" customClass="TaskDetailViewController" customModule="todoapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17s-sJ-nFE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,20 +98,33 @@
                                 <rect key="frame" x="285" y="241" width="74" height="30"/>
                                 <state key="normal" title="Apply Edit"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02C-Lp-kRu">
+                                <rect key="frame" x="166" y="113" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="CxN-KK-1RG" secondAttribute="trailing" constant="16" id="0ZX-nT-ug5"/>
+                            <constraint firstItem="02C-Lp-kRu" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="49" id="5oZ-du-ycz"/>
                             <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="cKb-YA-dPE" secondAttribute="trailing" constant="16" id="A8C-vu-8ap"/>
                             <constraint firstItem="84t-fa-aJQ" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="144" id="Avs-oK-azf"/>
                             <constraint firstItem="CxN-KK-1RG" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="177" id="FLc-Jd-6PS"/>
+                            <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="02C-Lp-kRu" secondAttribute="trailing" constant="167" id="bGB-dZ-4pt"/>
                             <constraint firstItem="cKb-YA-dPE" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="139" id="edU-lr-rLG"/>
+                            <constraint firstItem="02C-Lp-kRu" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="166" id="nIT-mD-zkb"/>
                             <constraint firstItem="84t-fa-aJQ" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="16" id="nRS-Rt-maj"/>
                             <constraint firstItem="cKb-YA-dPE" firstAttribute="leading" secondItem="84t-fa-aJQ" secondAttribute="trailing" constant="8" id="umK-z2-RMT"/>
                             <constraint firstItem="CxN-KK-1RG" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="285" id="wYC-tM-UK7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2IL-9B-uZD"/>
                     </view>
+                    <connections>
+                        <outlet property="newTaskNameField" destination="cKb-YA-dPE" id="m3e-Bd-vfA"/>
+                        <outlet property="originalTaskName" destination="02C-Lp-kRu" id="KeW-Ws-fIO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTm-IE-9AW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

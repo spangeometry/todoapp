@@ -10,13 +10,14 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
 
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var originalTaskName: UILabel!
     
     var selectedTask: Task?
+    @IBOutlet weak var newTaskNameField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        display.text = selectedTask?.name
+        self.title = selectedTask?.name
     }
     
 }

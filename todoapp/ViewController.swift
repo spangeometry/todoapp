@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
     
-    var selected: String?
+    var selected: Task?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +20,22 @@ class ViewController: UITableViewController {
     
     private var tasks = Task.getMockData()
     
+    //A user should be able to add a task...
     @IBAction func tappedNewTaskButton(_ sender: UIBarButtonItem) {
         addTask(name: "New Task")
     }
    
     
     private func addTask(name: String) {
-        let newCellIndex = tasks.count
         tasks.append(Task(name: name))
-        tableView.insertRows(at: [IndexPath(row: newCellIndex, section: 0)], with: .top)
+        tableView.reloadData()
     }
     
-    //Tells view number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    //Set cell properties
+    //Set cell name and add checkmark for completed tasks
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_task", for: indexPath)
@@ -52,10 +51,18 @@ class ViewController: UITableViewController {
         return cell
         
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selected = tasks[indexPath.row].name
+        selected = tasks[indexPath.row]
+
         performSegue(withIdentifier: "detailTransition", sender: self)
+    }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TaskDetailViewController {
+            destination.selectedTask = selected
+        }
     }
 
 
