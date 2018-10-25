@@ -11,24 +11,29 @@ import XCTest
 
 class todoappTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var testTask = Task(name: "Test task")
+    
+    func testTaskName() { //Tests initial task name
+        XCTAssertEqual(testTask.name, "Test task")
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testTaskNameChange() { //Tests task name changes
+        testTask.changeName(name: "Changed task name")
+        XCTAssertEqual(testTask.name, "Changed task name")
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testTaskIsDoneFalse() { //Tests initial task state
+        XCTAssertEqual(testTask.isDone, false)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testTaskIsDoneToggle1() { //Tests task state toggles
+        testTask.toggleDone()
+        XCTAssertEqual(testTask.isDone, true)
+    }
+    
+    func testTaskIsDoneToggle2() { //Tests task state toggles
+        testTask.toggleDone()
+        XCTAssertEqual(testTask.isDone, false)
     }
 
 }

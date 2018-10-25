@@ -18,21 +18,22 @@ class TaskDetailViewController: UIViewController {
     var selectedTask: Task?
     
     var inputText: String {
-        if let text = newTaskNameField.text {
+        if let text = newTaskNameField.text, !text.isEmpty {
             return text
         } else {
             return selectedTask?.name ?? ""
         }
     }
+    
     @IBAction func statusPressed(_ sender: UISwitch) {
         selectedTask?.toggleDone()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskUpdated"), object: nil)
         editStatusButton.isOn = selectedTask?.isDone ?? false
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
         selectedTask?.changeName(name: inputText)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskUpdated"), object: nil)
         self.originalTaskName.text = selectedTask?.name
     }
     

@@ -11,26 +11,53 @@ import UIKit
 class ViewController: UITableViewController {
     
     var selected: Task?
+    private var tasks = [Task]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         self.title = "TodoApp"
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        //Listen for an updated task name or state
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "taskUpdated"), object: nil)
+        
+        //Listen for TodoApp moving to background
+        NotificationCenter.default.addObserver(self, selector: #selector(saveList), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        //Load saved data, if any exists
+        do {
+            self.tasks = try [Task].readSaveData()
+        } catch let error as NSError {
+            if error.domain == NSCocoaErrorDomain && error.code == NSFileNoSuchFileError {
+                NSLog("No save data found.")
+            } else {
+                NSLog("Error reading from save data: \(error)")
+            }
+        }
     }
     
-    private var tasks = Task.getMockData()
+    
     
     //A user should be able to add a task...
     @IBAction func tappedNewTaskButton(_ sender: UIBarButtonItem) {
         addTask(name: "New Task")
     }
    
+    //Reloads the table
     @objc func loadList(){
-        //load data here
         self.tableView.reloadData()
     }
     
+    //Saves the current list of tasks
+    @objc func saveList(_ notification: Notification) {
+        do {
+            try tasks.writeSaveData()
+        } catch let error {
+            NSLog("Error saving data: \(error)")
+        }
+    }
+    
+    //Adds a new task to the list of tasks
     private func addTask(name: String) {
         tasks.append(Task(name: name))
         tableView.reloadData()
@@ -67,6 +94,16 @@ class ViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? TaskDetailViewController {
             destination.selectedTask = selected
+        }
+    }
+    
+    //Lets us swipe to delete
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if indexPath.row < tasks.count
+        {
+            tasks.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
 
