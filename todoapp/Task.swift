@@ -9,11 +9,14 @@
 import Foundation
 
 class Task: NSObject, NSCoding {
+    
+    //Encodes a Task
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: "name")
         aCoder.encode(self.isDone, forKey: "isDone")
     }
     
+    //Decodes a Task
     required init?(coder aDecoder: NSCoder) {
         if let name = aDecoder.decodeObject(forKey: "name") as? String {
             self.name = name
@@ -28,7 +31,6 @@ class Task: NSObject, NSCoding {
         }
     }
     
-    
     var name: String
     var isDone: Bool
     
@@ -41,25 +43,14 @@ class Task: NSObject, NSCoding {
         self.name = name
     }
     
+    //Cycles between complete/incomplete states
     public func toggleDone() {
         isDone = !isDone
     }
     
 }
 
-extension Task {
-    
-    public class func getMockData() -> [Task] {
-        return [
-            Task(name: "520 Homework"),
-            Task(name: "520 Midterm"),
-            Task(name: "690 Homework")
-        ]
-    }
-    
-}
-
-extension Collection where Iterator.Element == Task {
+extension Collection where Iterator.Element == Task { //Handles saving, loading, and save location
     
     private static func buildSaveDataPath() -> URL? {
         let url = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

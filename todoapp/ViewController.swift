@@ -69,7 +69,6 @@ class ViewController: UITableViewController {
     
     //Set cell name and add checkmark for completed tasks
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell_task", for: indexPath)
         
         if indexPath.row < tasks.count {
@@ -84,13 +83,13 @@ class ViewController: UITableViewController {
         
     }
 
+    //Performs segue upon row tap
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selected = tasks[indexPath.row]
-
         performSegue(withIdentifier: "detailTransition", sender: self)
     }
 
-    
+    //Passes the Task tapped to the detail destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? TaskDetailViewController {
             destination.selectedTask = selected
@@ -106,7 +105,6 @@ class ViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
 
 }
 
