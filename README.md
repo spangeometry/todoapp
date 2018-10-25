@@ -13,3 +13,5 @@ Grading:
 - 10%: User experience
   - The app looks nice (in landscape and portrait orientation)
   - The flow through the app makes sense
+
+Built with the assistance of various sources, including Axel Ancona Esselmann's example tableviewdemo, Bruno Philipe's encoding/serialization/deletion tutorial, and many StackOverflow questions.
