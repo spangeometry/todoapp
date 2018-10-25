@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22303B18218187C10014C00A /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22303B17218187C10014C00A /* Task.swift */; };
+		22303B1A2181C0150014C00A /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22303B192181C0150014C00A /* TaskDetailViewController.swift */; };
 		2280EA952180921100D066F8 /* EditScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2280EA942180921100D066F8 /* EditScreen.storyboard */; };
 		22A2D10C218088A40020A0B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2D10B218088A40020A0B5 /* AppDelegate.swift */; };
 		22A2D10E218088A40020A0B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2D10D218088A40020A0B5 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22303B17218187C10014C00A /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		22303B192181C0150014C00A /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2280EA942180921100D066F8 /* EditScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditScreen.storyboard; sourceTree = "<group>"; };
 		22A2D108218088A40020A0B5 /* todoapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todoapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22A2D10B218088A40020A0B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 			children = (
 				22A2D10B218088A40020A0B5 /* AppDelegate.swift */,
 				22A2D10D218088A40020A0B5 /* ViewController.swift */,
+				22303B192181C0150014C00A /* TaskDetailViewController.swift */,
+				22303B17218187C10014C00A /* Task.swift */,
 				2280EA942180921100D066F8 /* EditScreen.storyboard */,
 				22A2D10F218088A40020A0B5 /* Main.storyboard */,
 				22A2D1392180903F0020A0B5 /* CreateScreen.storyboard */,
@@ -265,6 +271,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A2D10E218088A40020A0B5 /* ViewController.swift in Sources */,
+				22303B18218187C10014C00A /* Task.swift in Sources */,
+				22303B1A2181C0150014C00A /* TaskDetailViewController.swift in Sources */,
 				22A2D10C218088A40020A0B5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
