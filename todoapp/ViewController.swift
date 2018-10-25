@@ -16,6 +16,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "TodoApp"
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
     
     private var tasks = Task.getMockData()
@@ -25,6 +26,10 @@ class ViewController: UITableViewController {
         addTask(name: "New Task")
     }
    
+    @objc func loadList(){
+        //load data here
+        self.tableView.reloadData()
+    }
     
     private func addTask(name: String) {
         tasks.append(Task(name: name))

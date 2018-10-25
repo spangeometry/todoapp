@@ -42,7 +42,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oFC-g6-cYn">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="7D6-d7-mgI">
+                        <barButtonItem key="rightBarButtonItem" title="New Task" id="7D6-d7-mgI">
                             <connections>
                                 <action selector="tappedNewTaskButton:" destination="o5J-8H-oUh" id="pw3-73-vXJ"/>
                             </connections>
@@ -97,38 +97,52 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxN-KK-1RG">
                                 <rect key="frame" x="285" y="241" width="74" height="30"/>
                                 <state key="normal" title="Apply Edit"/>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="DQw-P9-HXq" eventType="touchUpInside" id="k0x-6i-JYB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02C-Lp-kRu">
-                                <rect key="frame" x="166" y="113" width="42" height="21"/>
+                                <rect key="frame" x="58" y="113" width="264" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MrA-6h-MnL">
+                                <rect key="frame" x="163" y="318" width="49" height="31"/>
+                                <connections>
+                                    <action selector="statusPressed:" destination="DQw-P9-HXq" eventType="touchUpInside" id="JAD-sc-i7e"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="CxN-KK-1RG" secondAttribute="trailing" constant="16" id="0ZX-nT-ug5"/>
-                            <constraint firstItem="02C-Lp-kRu" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="49" id="5oZ-du-ycz"/>
                             <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="cKb-YA-dPE" secondAttribute="trailing" constant="16" id="A8C-vu-8ap"/>
                             <constraint firstItem="84t-fa-aJQ" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="144" id="Avs-oK-azf"/>
+                            <constraint firstItem="02C-Lp-kRu" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="49" id="Cw9-4h-YX1"/>
                             <constraint firstItem="CxN-KK-1RG" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="177" id="FLc-Jd-6PS"/>
-                            <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="02C-Lp-kRu" secondAttribute="trailing" constant="167" id="bGB-dZ-4pt"/>
+                            <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="02C-Lp-kRu" secondAttribute="trailing" constant="53" id="ShO-a7-QKf"/>
                             <constraint firstItem="cKb-YA-dPE" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="139" id="edU-lr-rLG"/>
-                            <constraint firstItem="02C-Lp-kRu" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="166" id="nIT-mD-zkb"/>
+                            <constraint firstItem="2IL-9B-uZD" firstAttribute="trailing" secondItem="MrA-6h-MnL" secondAttribute="trailing" constant="165" id="j2H-Tk-gaf"/>
+                            <constraint firstItem="02C-Lp-kRu" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="58" id="jOj-Wx-8cl"/>
+                            <constraint firstItem="MrA-6h-MnL" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="163" id="lUc-E1-H0L"/>
                             <constraint firstItem="84t-fa-aJQ" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="16" id="nRS-Rt-maj"/>
+                            <constraint firstItem="MrA-6h-MnL" firstAttribute="top" secondItem="2IL-9B-uZD" secondAttribute="top" constant="254" id="nVc-ca-4tq"/>
                             <constraint firstItem="cKb-YA-dPE" firstAttribute="leading" secondItem="84t-fa-aJQ" secondAttribute="trailing" constant="8" id="umK-z2-RMT"/>
                             <constraint firstItem="CxN-KK-1RG" firstAttribute="leading" secondItem="2IL-9B-uZD" secondAttribute="leading" constant="285" id="wYC-tM-UK7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2IL-9B-uZD"/>
                     </view>
                     <connections>
+                        <outlet property="editNameButton" destination="CxN-KK-1RG" id="gWb-h4-ghT"/>
+                        <outlet property="editStatusButton" destination="MrA-6h-MnL" id="rHt-yX-sss"/>
                         <outlet property="newTaskNameField" destination="cKb-YA-dPE" id="m3e-Bd-vfA"/>
                         <outlet property="originalTaskName" destination="02C-Lp-kRu" id="KeW-Ws-fIO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTm-IE-9AW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2108" y="20"/>
+            <point key="canvasLocation" x="2108" y="19.340329835082461"/>
         </scene>
     </scenes>
 </document>
