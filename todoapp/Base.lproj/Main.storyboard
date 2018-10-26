@@ -42,6 +42,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="oFC-g6-cYn">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Jq8-MZ-I5i">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QCY-PI-bb5">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Viewing All"/>
+                                <connections>
+                                    <action selector="viewModeButtonPressed:" destination="o5J-8H-oUh" eventType="touchUpInside" id="pqd-8M-SAb"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Task" id="7D6-d7-mgI">
                             <connections>
                                 <action selector="tappedNewTaskButton:" destination="o5J-8H-oUh" id="pw3-73-vXJ"/>
@@ -49,6 +59,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="viewModeButton" destination="QCY-PI-bb5" id="M3b-8w-qFG"/>
                         <segue destination="DQw-P9-HXq" kind="show" identifier="detailTransition" id="1Yd-s8-Rpx"/>
                     </connections>
                 </tableViewController>

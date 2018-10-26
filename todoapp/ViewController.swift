@@ -12,9 +12,13 @@ class ViewController: UITableViewController {
     
     var selected: Task?
     private var tasks = [Task]()
-
+    var viewMode = Int(0)
+    var selectedCell = NSIndexPath()
+    @IBOutlet weak var viewModeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tableView.rowHeight = 200
 
         self.title = "TodoApp"
         
@@ -36,6 +40,28 @@ class ViewController: UITableViewController {
         }
     }
     
+    @IBAction func viewModeButtonPressed(_ sender: Any) {
+        viewMode = ((viewMode + 1) % 3)
+        
+        switch viewMode {
+        case 0:
+            viewModeButton.setTitle("View: All", for: .normal)
+            tableView.rowHeight = 100
+        case 1:
+            viewModeButton.setTitle("View: To-do", for: .normal)
+        case 2:
+            viewModeButton.setTitle("View: Done", for: .normal)
+        default:
+            break
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if tasks[indexPath.row].isDone == true {
+            return 100 //Size you want to increase to
+        }
+        return 50 // Default Size
+    }
     
     
     //A user should be able to add a task...
@@ -77,8 +103,8 @@ class ViewController: UITableViewController {
             
             let accessory: UITableViewCell.AccessoryType = task.isDone ? .checkmark : .none
             cell.accessoryType = accessory
+            
         }
-        
         return cell
         
     }
