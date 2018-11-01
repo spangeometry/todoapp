@@ -46,7 +46,7 @@ class ViewController: UITableViewController {
         switch viewMode {
         case 0:
             viewModeButton.setTitle("View: All", for: .normal)
-            tableView.rowHeight = 100
+            tableView.reloadData()
         case 1:
             viewModeButton.setTitle("View: To-do", for: .normal)
         case 2:
@@ -57,8 +57,10 @@ class ViewController: UITableViewController {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if tasks[indexPath.row].isDone == true {
-            return 100 //Size you want to increase to
+        for iden in tasks {
+            if iden.isDone == true {
+                return 200//Size you want to increase to
+            }
         }
         return 50 // Default Size
     }
