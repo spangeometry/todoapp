@@ -19,8 +19,9 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //tableView.rowHeight = 200
-
+        
         self.title = "TodoApp"
+        viewModeButton.setTitle("", for: .normal)
         
         //Listen for an updated task name or state
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "taskUpdated"), object: nil)
@@ -40,17 +41,20 @@ class ViewController: UITableViewController {
         }
     }
     
+    override var prefersStatusBarHidden: Bool { //Keeps status bar visible in landscape
+        return false
+    }
+    
+    // Filters not implemented
     @IBAction func viewModeButtonPressed(_ sender: Any) {
         viewMode = ((viewMode + 1) % 3)
-        
         switch viewMode {
         case 0:
-            viewModeButton.setTitle("View: All", for: .normal)
-            tableView.reloadData()
+            viewModeButton.setTitle("", for: .normal)
         case 1:
-            viewModeButton.setTitle("View: To-do", for: .normal)
+            viewModeButton.setTitle("", for: .normal)
         case 2:
-            viewModeButton.setTitle("View: Done", for: .normal)
+            viewModeButton.setTitle("", for: .normal)
         default:
             break
         }
@@ -70,7 +74,7 @@ class ViewController: UITableViewController {
     @IBAction func tappedNewTaskButton(_ sender: UIBarButtonItem) {
         addTask(name: "New Task")
     }
-   
+    
     //Reloads the table
     @objc func loadList(){
         self.tableView.reloadData()
@@ -110,13 +114,13 @@ class ViewController: UITableViewController {
         return cell
         
     }
-
+    
     //Performs segue upon row tap
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selected = tasks[indexPath.row]
         performSegue(withIdentifier: "detailTransition", sender: self)
     }
-
+    
     //Passes the Task tapped to the detail destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? TaskDetailViewController {
@@ -133,6 +137,6 @@ class ViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
+    
 }
 

@@ -9,13 +9,17 @@
 import UIKit
 
 class TaskDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var originalTaskName: UILabel!
     @IBOutlet weak var newTaskNameField: UITextField!
     @IBOutlet weak var editNameButton: UIButton!
     @IBOutlet weak var editStatusButton: UISwitch!
     
     var selectedTask: Task? //The task the user tapped on
+    
+    override var prefersStatusBarHidden: Bool { //Keeps status bar visible in landscape
+        return false
+    }
     
     //Prepares input; prevents empty input
     var inputText: String {
@@ -24,7 +28,7 @@ class TaskDetailViewController: UIViewController {
         } else {
             return selectedTask?.name ?? ""
         }
-    }
+    }    
     
     //Toggles task completion state
     @IBAction func statusPressed(_ sender: UISwitch) {

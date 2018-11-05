@@ -10,7 +10,7 @@ import XCTest
 @testable import todoapp
 
 class todoappTests: XCTestCase {
-
+    
     var testTask = Task(name: "Test task")
     
     func testTaskName() { //Tests initial task name
@@ -35,5 +35,5 @@ class todoappTests: XCTestCase {
         testTask.toggleDone()
         XCTAssertEqual(testTask.isDone, false)
     }
-
+    
 }
